@@ -10,10 +10,52 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_08_155722) do
+ActiveRecord::Schema.define(version: 2021_07_08_201900) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "job_histories", force: :cascade do |t|
+    t.string "start_date"
+    t.string "end_date"
+    t.string "title"
+    t.bigint "company_id", null: false
+    t.text "notes"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "talent_id", null: false
+    t.index ["company_id"], name: "index_job_histories_on_company_id"
+    t.index ["talent_id"], name: "index_job_histories_on_talent_id"
+  end
+
+  create_table "talents", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "location"
+    t.string "business"
+    t.string "unit"
+    t.string "team"
+    t.string "sub_team"
+    t.string "title"
+    t.string "contact"
+    t.text "notes"
+    t.string "email"
+    t.boolean "intern"
+    t.string "grad_year"
+    t.string "entry"
+    t.string "year"
+    t.string "institution"
+    t.string "level"
+    t.string "course"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +69,6 @@ ActiveRecord::Schema.define(version: 2021_07_08_155722) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "job_histories", "companies"
+  add_foreign_key "job_histories", "talents"
 end
