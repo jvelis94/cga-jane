@@ -19,6 +19,7 @@ employees.drop(1).each do |employee|
         business_unit: business_unit,
         team: team,
         sub_team: sub_team,
+        entity: entity,
         title: title,
         contact: contact,
         notes: notes,
