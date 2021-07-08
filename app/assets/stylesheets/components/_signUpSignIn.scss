@@ -1,0 +1,36 @@
+.form-size {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+    text-align: center !important;   
+    
+}
+
+.img-div {
+    background-color: #222C37;
+    margin-bottom: 24px;
+    padding: 16px 0px;
+    border-radius: 10px;
+}
+
+.img-logo {
+    box-sizing: border-box;
+
+    height: 72px;
+    // width: 288px;
+}
+
+.form-page {
+    height: 85vh;
+    display: flex;
+    align-items: center;
+}
+
+.form-control {
+    border-radius: 10px;
+}
+
+.btn {
+    border-radius: 10px;
+}
