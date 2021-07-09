@@ -1,9 +1,10 @@
 
 // Wrap our fetch() method in a function we can call whenever we want
 const talentFilters = () => {
-    let filterTalents = (filter) => {
+
+    let filterTalents = (filters) => {
         const talentsList = document.getElementById('talentsList');
-        let filterParams = `?filter=${filter}`
+        let filterParams = `?filter=${filters}`
       
         let actionUrl = `talents${filterParams}`;
     
@@ -28,14 +29,36 @@ const talentFilters = () => {
 
 
 
-    const infraFilter = document.getElementById('infra-btn');
-    // const javascriptFilter = document.getElementById('javascript-filter');
-    // const remoteFilter = document.getElementById('remote-filter');
+
+    // const infraFilter = document.getElementById('infra-btn');
+    // infraFilter.onclick = () => { filterTalents('Infrastructure'); }
+    let selectedFilters = []
+    let filterClicks = {}
+    let filters = document.querySelectorAll(".checkboxes")
+
+    filters.forEach((filter, index) => {
+        filterClicks[index] = 0
+        let input = filter.querySelector('#flexCheckDefault')
+        let label = filter.querySelector('.form-check-label')
+
+        input.onclick = () => { 
+            filterClicks[index] += 1
+
+            if (filterClicks[index] % 2 === 0) {
+                let index = selectedFilters.indexOf(label.innerText)
+                selectedFilters.splice(index,1)
+            }
+            else {
+                selectedFilters.push(label.innerText);
+            }
+            console.log(selectedFilters)
+            filterTalents(selectedFilters)
+        }
+
+        // console.log(input, label.innerText)
+        
+    })
     
-    // // Trigger filerTalents when users click on a filter button
-    infraFilter.onclick = () => { filterTalents('Infrastructure'); }
-    // javascriptFilter.onclick = () => { filerTalents('javascript'); }
-    // remoteFilter.onclick = () => { filerTalents('remote'); }
 }
 
 export {talentFilters}
