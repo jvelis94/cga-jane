@@ -7,6 +7,8 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import 'bootstrap';
+
 
 import {copyToClipboard} from "../components/copyToClipboard"
 import {talentFilters} from "../components/talentFilters"
@@ -32,5 +34,11 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   copyToClipboard()
   talentFilters()
+  // $(function () {
+  //   $('[data-toggle="tooltip"]').tooltip()
+  // })
+  $('body').tooltip({
+    selector: '[data-toggle=tooltip]'
+});
 
 });

@@ -2,10 +2,9 @@
     <% talents.each do |talent| %>    
         <div class="card m-4" style="width: 400px;">
             <div class="card-body">
-                <h3 class="card-title"><%= talent.full_name %></h3>
+                <h3 class="card-title font-weight-bold"><%= talent.full_name %></h3>
                 <h6 class="card-text mb-2"><%= talent.title %></h6>
                 <h6 class="card-subtitle mt-2 mb-2 text-muted"><%= talent.entity %></h6>
-                
 
                 <% if talent.email %>
                 <i class="fas fa-envelope"> <%= talent.email %></a></i>
@@ -13,6 +12,12 @@
 
                 <% if talent.contact %>
                     <i class="fas fa-phone" id="copy-mobile"><span id='copy-text'> <%= talent.contact %></span></i>
+                <% end %>
+                <br>
+                <% if talent.notes %>
+                    <button type="button" class="btn btn-outline-secondary mt-2" data-toggle="tooltip" data-placement="top" title="<%=talent.notes%>">
+                        More Details
+                    </button>
                 <% end %>
             </div>
         </div>
