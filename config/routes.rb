@@ -15,4 +15,7 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :talents
+
+  get 'export_csv', to: 'talents#export_csv', as: 'export_csv', defaults: { format: :csv }
+  get 'export_search_to_csv', to: 'talents#export_search_to_csv', as: 'export_search_to_csv', defaults: { format: :csv }
 end

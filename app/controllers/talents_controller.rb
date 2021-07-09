@@ -20,7 +20,7 @@ class TalentsController < ApplicationController
             @talents = @talents.where(team: teams) if teams.length > 0
             @talents = @talents.where(sub_team: sub_teams) if sub_teams.length > 0
             @talents = @talents.where(entity: entities) if entities.length > 0
-            
+            @talent_ids = @talents.pluck(:id)
             puts @talents.count
             # query = URI.parse(request.url).query
             # query = query.gsub("%20", " ").gsub("filter=", "").split(",")
@@ -30,9 +30,30 @@ class TalentsController < ApplicationController
             @talents = Talent.all
         end
 
+        
+
         respond_to do |format|
             format.html
             format.js
+           
         end
     end
+
+
+    def export_csv
+        @talents = Talent.all
+        respond_to do |format|
+            format.csv { send_data @talents.to_csv, filename: "all-talents-#{Date.today}.csv" }
+            format.html { redirect_to talents_path }
+        end
+    end
+
+    def export_search_to_csv
+        @talents = Talent.where(id: params['talents'])
+        puts @talents
+        respond_to do |format|
+            format.csv { send_data @talents.to_csv, filename: "filtered-talents-#{Date.today}.csv" }
+        end
+    end
+
 end

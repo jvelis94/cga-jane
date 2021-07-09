@@ -1,26 +1,39 @@
-<div class="d-flex align-content-center justify-content-center flex-wrap" id="talentsList">
-    <% talents.each do |talent| %>    
-        <div class="card m-4" style="width: 400px;">
-            <div class="card-body">
-                <h3 class="card-title font-weight-bold"><%= talent.full_name %></h3>
-                <h6 class="card-text mb-2"><%= talent.title %></h6>
-                <h6 class="card-subtitle mt-2 mb-2 text-muted"><%= talent.entity %></h6>
 
-                <% if talent.email %>
-                <i class="fas fa-envelope"> <%= talent.email %></a></i>
-                <% end %>
-
-                <% if talent.contact %>
-                    <i class="fas fa-phone" id="copy-mobile"><span id='copy-text'> <%= talent.contact %></span></i>
-                <% end %>
-                <br>
-                <% if talent.notes %>
-                    <button type="button" class="btn btn-outline-secondary mt-2" data-toggle="tooltip" data-placement="top" title="<%=talent.notes%>">
-                        More Details
-                    </button>
-                <% end %>
-            </div>
+    
+    <div id="talentsList">
+        <div class='text-center' id="csv-links">
+            <%= link_to export_csv_path, target: "_blank" do %>
+                <button type="button" class="btn btn-link">Export all results</button>
+            <% end %>
+            <%= link_to export_search_to_csv_path(talents: @talent_ids), target: "_blank" do %>
+                <button type="button" class="btn btn-link">Export filtered results</button>
+            <% end %>
         </div>
-    <% end %>
+        <div class="d-flex align-content-center justify-content-center flex-wrap">
+            <% talents.each do |talent| %>    
+                <div class="card m-4" style="width: 400px;">
+                    <div class="card-body">
+                        <h3 class="card-title font-weight-bold"><%= talent.full_name %></h3>
+                        <h6 class="card-text mb-2"><%= talent.title %></h6>
+                        <h6 class="card-subtitle mt-2 mb-2 text-muted"><%= talent.entity %></h6>
+
+                        <% if talent.email %>
+                        <i class="fas fa-envelope" ><span class='ml-1'><%= talent.email %></span></i>
+                        <% end %>
+                        <br>
+
+                        <% if talent.contact %>
+                            <i class="fas fa-phone"><span> <%= talent.contact %></span></i>
+                        <% end %>
+                        <br>
+                        <% if talent.notes %>
+                            <button type="button" class="btn btn-outline-secondary mt-2" data-toggle="tooltip" data-placement="top" title="<%=talent.notes%>">
+                                More Details
+                            </button>
+                        <% end %>
+                    </div>
+                </div>
+            <% end %>
+        </div>
 </div>
 
