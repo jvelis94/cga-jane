@@ -9,6 +9,7 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
 import {copyToClipboard} from "../components/copyToClipboard"
+import {talentFilters} from "../components/talentFilters"
 
 Rails.start()
 Turbolinks.start()
@@ -30,5 +31,5 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   copyToClipboard()
-
+  talentFilters()
 });
