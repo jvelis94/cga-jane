@@ -5,7 +5,7 @@
                 <h3>Filters</h3>
                 <%= simple_form_for :filter, url: talents_path, method: "GET", remote: true do |f| %>
                     <%= f.input :locations, label: "Locations", collection: @locations, as: :check_boxes, include_blank: false %>
-                    <%= f.input :leadership, label: "Leadership", collection: @leadership, as: :check_boxes, include_blank: false %>
+                    <%= f.input :leadership, label: "Leadership", collection: ['Leadership'], as: :check_boxes, include_blank: false %>
                     <%= f.input :business_units, label: "Business Units",  collection: @business_units, as: :check_boxes, include_blank: false %>
                     <%= f.input :teams, label: "Teams", collection: @teams, as: :check_boxes, include_blank: false %>
                     <%= f.input :sub_teams, label: "Sub-Teams", collection: @sub_teams, as: :check_boxes, include_blank: false %>

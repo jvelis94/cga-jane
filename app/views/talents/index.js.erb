@@ -1,0 +1,12 @@
+function replaceTalents (innerHTML) {
+  const talents = document.getElementById('talentsList');
+  talents.innerHTML = innerHTML;
+}
+
+
+if ('<%= @filter %>' === "[]") {
+    replaceTalents("<%= j render 'talents_list', talents: Talent.all %>");
+}
+else {
+    replaceTalents("<%= j render 'talents_list', talents: @talents %>");
+}
