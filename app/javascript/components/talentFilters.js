@@ -4,7 +4,8 @@ const talentFilters = () => {
 
     let filterTalents = (filters) => {
         const talentsList = document.getElementById('talentsList');
-        let filterParams = `?filter=${filters}`
+        console.log(`filters length is ${filters.length}`)
+        let filterParams = (filters.length > 0) ? `?filter=${filters}` : ""
       
         let actionUrl = `talents${filterParams}`;
     
@@ -51,8 +52,12 @@ const talentFilters = () => {
             else {
                 selectedFilters.push(label.innerText);
             }
-            console.log(selectedFilters)
-            filterTalents(selectedFilters)
+            if (selectedFilters.length > 0) {
+                filterTalents(selectedFilters)
+            }
+            else {
+                location.reload();
+            }
         }
 
         // console.log(input, label.innerText)
