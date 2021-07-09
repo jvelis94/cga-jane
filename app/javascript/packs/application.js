@@ -32,7 +32,7 @@ import "bootstrap";
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-  copyToClipboard()
+  // copyToClipboard()
   talentFilters()
   // $(function () {
   //   $('[data-toggle="tooltip"]').tooltip()

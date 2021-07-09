@@ -1,6 +1,7 @@
 
     
     <div id="talentsList">
+        <h3 class="text-center mt-4"><%= @talents.count %> results available</h3>        
         <div class='text-center' id="csv-links">
             <%= link_to export_csv_path, target: "_blank" do %>
                 <button type="button" class="btn btn-link">Export all results</button>
