@@ -8,13 +8,14 @@ csv_text_firms = File.read(Rails.root.join('lib', 'seeds', 'jane_street_2021.csv
 employees = CSV.parse(csv_text_firms)
 
 employees.drop(1).each do |employee|
-    location, business_unit, team, sub_team, entity, first_name, last_name, title, contact, notes, email, intern, grad_year, entry_year, institution, level, course = employee
+    location, leadership, business_unit, team, sub_team, entity, first_name, last_name, title, contact, notes, email = employee
     
     company = Company.find_or_create_by(name: entity)
 
     talent = Talent.create!(
         first_name: first_name,
         last_name: last_name,
+        leadership: leadership,
         location: location,
         business_unit: business_unit,
         team: team,
@@ -22,14 +23,8 @@ employees.drop(1).each do |employee|
         entity: entity,
         title: title,
         contact: contact,
-        notes: notes,
         email: email,
-        intern: intern,
-        grad_year: grad_year,
-        entry_year: entry_year,
-        institution: institution,
-        level: level,
-        course: course
+        notes: notes,
     )
 
     # JobHistory.create!(

@@ -2,15 +2,16 @@
     <div class="row">
         <div class='col-lg-2 mt-4'>
             <div>
-                <h3>Business Units</h3>
-                <% @business_units.each do |unit| %>
-                    <div class="form-check checkboxes">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            <%= unit %>
-                        </label>
-                    </div>
-                <% end  %>
+                <h3>Filters</h3>
+                <%= simple_form_for :filter, url: talents_path, method: "GET", remote: true do |f| %>
+                    <%= f.input :locations, label: "Locations", collection: @locations, as: :check_boxes, include_blank: false %>
+                    <%= f.input :leadership, label: "Leadership", collection: @leadership, as: :check_boxes, include_blank: false %>
+                    <%= f.input :business_units, label: "Business Units",  collection: @business_units, as: :check_boxes, include_blank: false %>
+                    <%= f.input :teams, label: "Teams", collection: @teams, as: :check_boxes, include_blank: false %>
+                    <%= f.input :sub_teams, label: "Sub-Teams", collection: @sub_teams, as: :check_boxes, include_blank: false %>
+                    <%= f.input :entities, label: "Entities", collection: @entities, as: :check_boxes, include_blank: false %>                    
+                    <%= link_to "Reset", talents_path  %>
+                <% end %>
             </div>
         </div>
         <div class='col-lg-10'>
@@ -18,3 +19,5 @@
         </div>
     </div>
 </div>
+
+
