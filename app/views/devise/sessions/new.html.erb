@@ -15,7 +15,7 @@
                     input_html: { autocomplete: "email" } %>
         <%= f.input :password,
                     required: false,
-                    placeholder: "email",
+                    placeholder: "password",
                     label: false,
                     input_html: { autocomplete: "current-password" } %>
         <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
