@@ -7,9 +7,9 @@
     border-radius: 15px !important;
 }
 
-.col-form-label {
-    font-weight: bold !important;
-}
+// .col-form-label {
+//     font-weight: bold !important;
+// }
 
 .custom-col-label {
     font-weight: bold !important;
@@ -41,4 +41,16 @@
     border-left: none;
     background-color: white;
     border-top-right-radius: 10px;
+}
+
+.card-header {
+    border: none;
+}
+
+.card {
+    margin-top: 8px;
+}
+
+.row {
+    margin-right: 0;
 }

@@ -17,6 +17,9 @@
                         <h3 class="card-title font-weight-bold"><%= talent.full_name %></h3>
                         <h6 class="card-text mb-2"><%= talent.title %></h6>
                         <h6 class="card-subtitle mt-2 mb-2 text-muted"><%= talent.entity %></h6>
+                        <% if talent.location %>
+                        <h6 class="card-subtitle mt-2 mb-2 text-muted"><%= talent.location %></h6>
+                        <% end %>
 
                         <% if talent.email %>
                         <i class="fas fa-envelope" ><span class='ml-1'><%= talent.email %></span></i>
