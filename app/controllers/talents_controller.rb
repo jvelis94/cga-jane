@@ -3,7 +3,7 @@ class TalentsController < ApplicationController
         @locations = Talent.distinct.pluck(:location).sort
         @business_units = Talent.distinct.pluck(:business_unit).sort
         # @capital_teams = Talent.distinct.pluck(:team).sort
-        @capital_teams = ["ADRs", "Equities", "ETFs", "Finance & Treasury", "Finance & Treasury", "Fixed Income & Commodities","Hardware Design",
+        @capital_teams = ["ADRs", "Equities", "ETFs", "Finance & Treasury", "Fixed Income & Commodities","Hardware Design",
             "Institutitonal Strategy & Business Development","Intern", "Legal & Compliance", "Market Data", "Marketing", "Operations",
             "Options", "Other", "Regulatory Capital & Risk", "Software Development", "Software Engineering", "Surveillance", "Trading Desk Operations"
         ]
