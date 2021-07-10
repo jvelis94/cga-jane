@@ -4,12 +4,20 @@
             <div>
                 <h3 class="font-weight-bold mt-4">Filters</h3>
                 <%= simple_form_for :filter, url: talents_path, method: "GET", remote: true do |f| %>
-                    <%= f.input :locations, label: "Locations", collection: @locations, as: :check_boxes, include_blank: false %>
-                    <%= f.input :leadership, label: "Leadership", collection: ['Leadership'], as: :check_boxes, include_blank: false %>
-                    <%= f.input :business_units, label: "Business Units",  collection: @business_units, as: :check_boxes, include_blank: false %>
-                    <%= f.input :teams, label: "Teams", collection: @teams, as: :check_boxes, include_blank: false %>
-                    <%= f.input :sub_teams, label: "Sub-Teams", collection: @sub_teams, as: :check_boxes, include_blank: false %>
-                    <%= f.input :entities, label: "Entities", collection: @entities, as: :check_boxes, include_blank: false %>                    
+                    <%= f.input :entities, label: "Entities", collection: @entities, as: :check_boxes %>                    
+                    <%= f.input :locations, label: "Locations", collection: @locations, as: :check_boxes %>
+                    <%= f.input :leadership, label: "Leadership", collection: ['Leadership'], as: :check_boxes %>
+                    <%= f.input :business_units, label: "Business Units",  collection: @business_units, as: :check_boxes %>
+
+                    <%= f.label :teams, class: "col-form-label" %><br>
+                    
+                    <%= f.label :capital_teams, "Jane Street Capital", class: 'custom-col-label' %>
+                    <%= f.input :capital_teams, collection: @capital_teams, as: :check_boxes, label: false, legend_tag: false %>
+
+                    <%= f.label :execution_teams, "Jane Street Execution Services", class: 'custom-col-label' %>
+                    <%= f.input :execution_teams, collection: @execution_teams, as: :check_boxes, label: false, legend_tag: false%>
+                    
+                    <%= f.input :sub_teams, label: "Sub-Teams", collection: @sub_teams, as: :check_boxes %>
                     <%= link_to "Reset", talents_path  %>
                 <% end %>
             </div>
